@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Weather</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!--<link rel="stylesheet" href="">!-->
  </head>
 <body>
     
     <!-- Header Section with Navigation. Header class makes text vertical with logo on same line -->
     <header class="header">
+
         <!---Combined logo text-->
+        <div class="logo-container">
         <a href="index.html">
-            <h2 class="logo">
+            <h2 class="logo-text">
                 <span class="weather-font">Weather</span>
                 <span class="forecast-font">Forecast</span>
                 </h2>
             </a>
 
         <!---Image logo-->
-        <a href="index.html"><img src="sunny.png" alt="logo of a sun"></a>
-        
+        <a href="index.html">
+            <img class="sun-logo" src="sunny.png" alt="logo of a sun">
+        </a>
+    </div>
+
         <!--Navigation -->
         <nav>
             <ul class="menu">
@@ -34,13 +39,13 @@
     <!--Main Section -->
     <section class= "weather-display">
         <!---Weather picture as background-->
-             <div class="weather-background">
+        <div class="weather-background">
                 <img src="thunder.jpg" alt="thundery weather" class="img-fullsize">
              </div>
              <!--Weather background is empty by default -->
              <img id= "weather-image" src= "" alt="weather background">
-
-    <!--Input button -->
+ 
+             <!--Input button -->
              <form action="">
                 <input type="text" autocomplete="off">
                 <button>

@@ -1,3 +1,9 @@
+//const form= document.getElementById('"');
+
+
+//form.addEventListener('submit', function(event){
+    //event.preventDefault(); //to make sure the page doesnt reload
+
 const apiUrl=('länk');
 
 fetch(apiUrl)
@@ -17,15 +23,6 @@ fetch(apiUrl)
     .catch(error => {
         console.error('Error:', error);  // Handle errors
     });
-
-/*fetch('https://open-meteo.com/' , )
-    .then(response=>{
-        if (!response.ok){
-        console.log("Error);
-}) response.json());
-    .then(data=>console.log(data))
-         .catch(error => console.error('Error: ', error));
-*/
 
 //Changes background pictures depending on temperature
 function changeImage(temperature){

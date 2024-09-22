@@ -11,14 +11,13 @@ body{
     background-color: aliceblue;
     color: #333; /* Set the text color for the body */
     padding-top: 80px; /* Add padding to the top to avoid content overlapping the fixed header */
-    display: flex;
  }
 
 header{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px; /* Set font size for text within the header */
+    font-size: 17px; /* Set font size for text within the header */
     background-color: rgba(255, 255, 255, 0.95); /* Light transparent background for the header */
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center; /* Vertically align items in the center of the header */
     padding: 15px 30px; /* Add padding inside the header */
@@ -28,20 +27,42 @@ header{
     z-index: 1000; /* Set a high z-index to ensure the header is above other content */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Add a subtle border below the header */
     transition: background-color 0.3s ease; /* Smooth transition effect for background color change */
+    
 }
 
-.logo{
-    font-size: 24px;
+/* Grouping the logo text and sun logo */
+.logo-container{
+    display: flex;
+    align-items: center; /* Align logo text and sun logo vertically */
+}
+
+.logo-text{
+    margin-right: 13px; /* Add space between the logo text and the sun logo */
+
+}
+
+.sun-logo{
     color: #333;
+    position: relative;
+    margin-right: 20px; /* Add space between the logo and the menu */
+    margin-bottom: 0; /* Remove or reduce bottom margin */
+    width: 50px;
+    height: auto;
+
 }
 
 .weather-font{
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    color: #333;
+
 }
 
 .forecast-font{
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
+    color: #333;
+    font-size: 23px;
+
 }
 
 header img{
@@ -52,6 +73,15 @@ header img{
 nav{
     display: flex;
 }
+
+.menu{
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Display menu items in a row */   
+}
+
+.menu li {
+    margin: 0 15px; /* Space between menu items */
+  }
 
 a{
     text-decoration: none; /*remove link color */
@@ -64,15 +94,6 @@ a{
     height: auto;
     display: block;
 }
-
-.menu{
-    list-style: none; /* Remove bullet points */
-    display: flex; /* Display menu items in a row */   
-}
-
-.menu li {
-    margin: 0 20px; /* Space between menu items */
-  }
 
 .search-button{
     padding: 20px;
