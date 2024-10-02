@@ -73,9 +73,8 @@ function getCurrentLocation() {
 
 getCurrentLocation(); // This triggers the function to execute
 
-//KODEN FUNKAR EJ
-function fetchCityName(latitude, longitude) {
-  const apiKey = "";
+ function fetchCityName(latitude, longitude) {
+  const apiKey = " ";
   const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
   let city = " ";
   let country = " ";
@@ -95,9 +94,8 @@ function fetchCityName(latitude, longitude) {
           // Check for city (locality) or administrative areas
           if (
             component.types.includes("locality") ||
-            component.types.includes("administrative_area_level_1") ||
-            component.types.includes("sublocality")
-          ) {
+            component.types.includes("administrative_area_level_1") || component.types.includes("sublocality")) 
+            {
             city = component.long_name;
           }
           if (component.types.includes("country")) {
@@ -124,6 +122,7 @@ function fetchCityName(latitude, longitude) {
     });
 }
 
+ 
 //Fetch weather data based on current location coordinates
 function fetchWeatherData(latitude, longitude) {
   const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&daily=temperature_2m_min,temperature_2m_max&timezone=Europe/Stockholm`;
@@ -192,27 +191,9 @@ function displayWeatherData(weather) {
 
   // Log or display weather data
   console.log(`Temperature: ${temperature}°C`);
-  console.log(
-    `Min Temperature: ${minTemperature}°C, Max Temperature: ${maxTemperature}°C`
-  );
+  console.log(`Min Temperature: ${minTemperature}°C, Max Temperature: ${maxTemperature}°C`);
   console.log(`Date: ${formattedDate}`);
   console.log(`Time: ${formattedTime}`);
 
   //alert(`Temperature: ${currentTemperature}°C, Min: ${minTemperature}, Max: ${maxTemperature}°C, Date: ${currentDate.toLocaleDateString()}, Time: ${currentTime}`);
 }
-
-//  // //Geolocation method
-// const getMyLocation= () =>{
-//     const status = document.querySelector('.status');
-
-//     const success = (position) =>{
-//         console.log(position)
-//     }
-
-//     const error = (!position) =>{
-//         console.log('Error: ', error)
-
-//     }
-
-//     navigator.geolocation.getCurrentPosition(success, error);
-// }

@@ -8,8 +8,8 @@
 body{
     font-family: 'Courier New', Courier, monospace;
     font-weight: 300;
-    line-height: 1.6;
-    background-color: aliceblue;
+    background-color: #f0f4f8;
+    color: #222;
     background-image: url("thunder.jpg");
     background-size: cover;
     background-position: center;
@@ -19,8 +19,8 @@ body{
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    padding-top: 80px;
-    color: #333;
+    position: relative;
+
 }
 
 /* body::before{
@@ -106,17 +106,10 @@ a{
     color: #333; /* Set link color */
 } 
 
-/*Utilities*/
-.current-date-text{
-    font-size: 30px; /* Size for the date */
-    text-align: left; /* Align to the left */
-    margin: 5px 0; /* Reduced space around date */
-}
-
-.main-container{
+/* .main-container{
     border: solid;
     position: relative;
-    width: 70vw;
+    width: 60vw;
     height: 70vh;
     z-index: 10;
     background: linear-gradient(
@@ -125,60 +118,131 @@ a{
         border-radius: 16px;
         backdrop-filter: blur(100px);
         padding: 20px;
+} */
+
+.main-container{
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent for a glass effect */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 16px;   
+    padding: 30px;   
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Soft shadow to add depth */
+    max-width: 800px;
+    margin: auto;
+    height: 70vh;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* A soft inner border */
 }
 
-/*Input container*/
-.input-container{
-    display: flex; /* Use flexbox to align items in a row */
-    align-items: center; /* Center items vertically */
-    margin-bottom: 30px; /* Space below the input container */
-}
-
-.search-button{
-    background: none;
-    border: none; 
-    cursor: pointer;
-    margin-left: 10px; /* Space between input field and search button */
-    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);
-    }
-
-.search-button span {
-    font-size: 28px; /* Adjust font size for the icon */
+.input-container {
+    grid-column: 1 / 3; /* Spans across both columns */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: -20px;
 }
 
 .city-input{
-    width: 300px;
-    padding: 10px 16px;
-    border-radius: 9px;
-    border: 3px solid transparent;
-    background: rgb(0, 0, 0, 0.15);
+    width: 350px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none; 
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  
+    color: #333;
+ }
+
+ .city-input::placeholder{
+    color: #656464;
+    font-size: 14px;
+    font-weight: 100;
+ }
+
+ .city-input:focus{
     outline: none;
-    font-weight: 500;
-    transition: 0.25s border;
-    padding-right: 45px;
-}
-.city-input:focus{
-     border: 3px solid rgba(0, 0, 0, 0.15); 
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Blue glow on focus */
+
 }
 
-.city-input::placeholder{
-    color: rgb(255, 255, 255, 0.75);
+.search-button{
+    background-color: #007BFF; 
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    margin-left: 9px;
+    border-radius: 13px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+ }
+
+ .search-button:hover {
+    background-color: #0056b3;  
 }
 
-/*Weather Info Section*/
+.search-button span {
+    font-size: 24px;  
+}
+
 /* Main weather display container */
 .weather-info{
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Two equal columns */
+    grid-template-rows: auto auto;   /* Rows adjust based on content */
+    gap: 10px;
+    color: 222;
+    margin-top: 10px;
  }
 
 /* City and Date Styling */
 .location-date-container{
-    display: flex; /* Keep location and temperature on the same row */
-    justify-content: space-between; /* Space between location and temperature */
+    grid-column: 1 / 2;  /* Location and Date span first column */
+    display: flex;
+    flex-direction: column;
     align-items: flex-start; /* Align items to the start */
-    margin-bottom: 10px; /* Space below this container */
+ }
+
+.current-date-text{
+    font-size: 30px;  
+    text-align: left; /* Align to the left */
+    margin: 5px 0; /* Reduced space around date */
+}
+
+/* Container that holds all elements horizontally aligned */
+.weather-condition-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spacing between icon and text */
+    margin-top: 10px;
+}
+
+.temperature-container {
+    grid-column: 2 / 3;  /* Temperature spans second column */
+    text-align: right;
+    color: 222;
+}
+
+#temperature {
+    font-family: 'Arial', sans-serif;
+    font-size: 70px;
+    font-weight: 500;
+}
+
+/* Optional styling for the icon */
+.weather-icon-img {
+    width: 100px;  /* Set icon size */
+    height: 100px;
+}
+
+/* Weather condition (Sunny) styling */
+.condition {
+    margin-top: 8px; /* Add spacing between icon and weather condition */
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .location{
@@ -192,39 +256,8 @@ a{
     flex-direction: column; /* Stack country and city vertically */
 }
 
-.current-date-text {
-    font-size: 30px; /* Size for the date */
-    margin: 0;
-    align-self: flex-start; /* Align date to the start of the container */
-}
-
 .location.city-input:hover{
     transform: scale(0.95);
-}
-
-/* Temperature Display */
-.weather-description-container {/* Container that holds all elements horizontally aligned */
-    display: flex;
-    align-items: center;
-    margin-top: 10px; /* Space above this container */
-}
-
-.weather-icon-img{
-    height: 100px;
-    width: 100px;
-    margin-right: 5px; /* Space between icon and condition text */
- }
-
-/* Temperature container */
-.temperature-container {
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack temperature vertically */
-    align-items: flex-end; /* Align temperature details to the right */
-    text-align: right; /* Align text to the right */
-}
-
-.country-text, .city-text, .current-date-text {
-    margin: 0;
 }
 
 /* Current weather description and icon aligned */
@@ -235,31 +268,19 @@ a{
     justify-content: center;
 }
 
-/* Weather condition (Sunny) styling */
-.condition {
-    margin-top: 8px; /* Add spacing between icon and weather condition */
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-}
-
 .country-text{
     font-size: 50px;
     font-weight: 550;
 }
 
 .city-text {
-    font-size: 40px; 
+    font-size: 45px; 
     font-weight: 550;
-}
-
-#temperature {
-    font-size: 70px;
-    font-weight: 500;
 }
 
 #min-max-temperature {
     font-size: 20px; /* Size for min/max temperatures */
+    line-height: 1.6;
 }
 
 .five-day-list{
