@@ -75,7 +75,7 @@ getCurrentLocation(); // This triggers the function to execute
 
 //KODEN FUNKAR EJ
 function fetchCityName(latitude, longitude) {
-  const apiKey = "AIzaSyDouOeXI58XfpsgEKXLE6xpMS7_QyNvABk";
+  const apiKey = "";
   const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
   let city = " ";
   let country = " ";
