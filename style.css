@@ -2,18 +2,38 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-weight: 600;
 }
 
 body{
     font-family: 'Courier New', Courier, monospace;
-    font-weight: 300; /* Use a light font weight for text */
-    line-height: 1.6; /*  Space between lines of text for better readability */
+    font-weight: 300;
+    line-height: 1.6;
     background-color: aliceblue;
-    color: #333; /* Set the text color for the body */
-    padding-top: 80px; /* Add padding to the top to avoid content overlapping the fixed header */
- }
+    background-image: url("thunder.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 80px;
+    color: #333;
+}
 
-header{
+/* body::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    background: rgb(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+ } */
+
+ header{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 17px; /* Set font size for text within the header */
     background-color: rgba(255, 255, 255, 0.95); /* Light transparent background for the header */
@@ -27,7 +47,6 @@ header{
     z-index: 1000; /* Set a high z-index to ensure the header is above other content */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Add a subtle border below the header */
     transition: background-color 0.3s ease; /* Smooth transition effect for background color change */
-    
 }
 
 /* Grouping the logo text and sun logo */
@@ -37,17 +56,7 @@ header{
 }
 
 .logo-text{
-    margin-right: 13px; /* Add space between the logo text and the sun logo */
-
-}
-
-.sun-logo{
-    color: #333;
-    position: relative;
-    margin-right: 20px; /* Add space between the logo and the menu */
-    margin-bottom: 0; /* Remove or reduce bottom margin */
-    width: 50px;
-    height: auto;
+    margin-right: 8px; /* Add space between the logo text and the sun logo */
 
 }
 
@@ -70,6 +79,15 @@ header img{
     height: auto; /* Maintain aspect ratio */  
 }
 
+.sun-logo{
+    color: #333;
+    position: relative;
+    margin-right: 20px; /* Add space between the logo and the menu */
+    margin-bottom: 0; /* Remove or reduce bottom margin */
+    width: 40px;
+    height: auto;
+}
+
 nav{
     display: flex;
 }
@@ -86,24 +104,191 @@ nav{
 a{
     text-decoration: none; /*remove link color */
     color: #333; /* Set link color */
-
 } 
 
-.img-fullsize{
-    width: 100%;
-    height: auto;
-    display: block;
+/*Utilities*/
+.current-date-text{
+    font-size: 30px; /* Size for the date */
+    text-align: left; /* Align to the left */
+    margin: 5px 0; /* Reduced space around date */
+}
+
+.main-container{
+    border: solid;
+    position: relative;
+    width: 70vw;
+    height: 70vh;
+    z-index: 10;
+    background: linear-gradient(
+        to top, rgb(0, 0, 0, 0.15),
+        rgb(255, 255, 255, 0.15 ));
+        border-radius: 16px;
+        backdrop-filter: blur(100px);
+        padding: 20px;
+}
+
+/*Input container*/
+.input-container{
+    display: flex; /* Use flexbox to align items in a row */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 30px; /* Space below the input container */
 }
 
 .search-button{
-    padding: 20px;
-    justify-content: center;
-    font-size: small;
-    border-radius: 10px;
-    width: 300px;
-    position: absolute;
-    top: 100px;
-    
- 
+    background: none;
+    border: none; 
+    cursor: pointer;
+    margin-left: 10px; /* Space between input field and search button */
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.search-button span {
+    font-size: 28px; /* Adjust font size for the icon */
 }
 
+.city-input{
+    width: 300px;
+    padding: 10px 16px;
+    border-radius: 9px;
+    border: 3px solid transparent;
+    background: rgb(0, 0, 0, 0.15);
+    outline: none;
+    font-weight: 500;
+    transition: 0.25s border;
+    padding-right: 45px;
+}
+.city-input:focus{
+     border: 3px solid rgba(0, 0, 0, 0.15); 
+}
+
+.city-input::placeholder{
+    color: rgb(255, 255, 255, 0.75);
+}
+
+/*Weather Info Section*/
+/* Main weather display container */
+.weather-info{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+ }
+
+/* City and Date Styling */
+.location-date-container{
+    display: flex; /* Keep location and temperature on the same row */
+    justify-content: space-between; /* Space between location and temperature */
+    align-items: flex-start; /* Align items to the start */
+    margin-bottom: 10px; /* Space below this container */
+}
+
+.location{
+    display: flex;
+    align-items: center;  
+    gap: 10px; /* Space between icon and texts */
+}
+
+.location-text {
+    display: flex;
+    flex-direction: column; /* Stack country and city vertically */
+}
+
+.current-date-text {
+    font-size: 30px; /* Size for the date */
+    margin: 0;
+    align-self: flex-start; /* Align date to the start of the container */
+}
+
+.location.city-input:hover{
+    transform: scale(0.95);
+}
+
+/* Temperature Display */
+.weather-description-container {/* Container that holds all elements horizontally aligned */
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Space above this container */
+}
+
+.weather-icon-img{
+    height: 100px;
+    width: 100px;
+    margin-right: 5px; /* Space between icon and condition text */
+ }
+
+/* Temperature container */
+.temperature-container {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack temperature vertically */
+    align-items: flex-end; /* Align temperature details to the right */
+    text-align: right; /* Align text to the right */
+}
+
+.country-text, .city-text, .current-date-text {
+    margin: 0;
+}
+
+/* Current weather description and icon aligned */
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Weather condition (Sunny) styling */
+.condition {
+    margin-top: 8px; /* Add spacing between icon and weather condition */
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.country-text{
+    font-size: 50px;
+    font-weight: 550;
+}
+
+.city-text {
+    font-size: 40px; 
+    font-weight: 550;
+}
+
+#temperature {
+    font-size: 70px;
+    font-weight: 500;
+}
+
+#min-max-temperature {
+    font-size: 20px; /* Size for min/max temperatures */
+}
+
+.five-day-list{
+    list-style: none;
+    display: flex; /* Display items in a row */
+    justify-content: space-between; /* Space them out */
+}
+
+.day-temperature{
+    font-size: 70px;
+    font-weight: 500;
+}
+
+/* Favorite Section */
+.favorite-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.favorite-container{
+    width: 80%;
+    max-width: 600px;
+    height: 300px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+}
+ 
+ 

@@ -1,0 +1,26 @@
+1. Weather from my current location(sub-functionalities)
+2. Search bar
+3. Favorites
+4. Time related based on location
+5. 5-day weather forecast
+
+
+
+
+1.  A function that implements Geolocation returns the city
+    Function that accepts cityname and returns latitute and longitude
+    Function that fetches the weatherdata using latitude and longitude and returns json-functionalities
+
+2. We need a user input that accepts city (we use the old function that takes cityname and returns latitude + longitude)
+    
+3. A button that add or remove favorite cities. It needs to save the cityname only.
+    If i click add to favorite save cityname by latitude and longitude.
+    When cityname is clicked to be displayed it should only fetch weatherdata - faster
+
+4. Based on latitude and longitude we show the time (gmt). See options online.
+
+5. Modify number one, instead of showing the currentweather only. Fetch for 5 days. Read documentation.
+    Sketch how it should look.
+
+
+make pictures as a background
