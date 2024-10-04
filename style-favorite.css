@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-weight: 600;
 }
 
-body{
+body {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 300;
     background-color: #f0f4f8;
@@ -20,8 +20,9 @@ body{
     justify-content: center;
     width: 100vw;
     height: 100vh;
-  }
-   
+    margin: 0;
+}
+
 header {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 17px;
@@ -64,7 +65,7 @@ header img {
     height: auto;
 }
 
-.favorite-background{
+.favorite-background {
     height: 60px;
     width: auto;
 }
@@ -96,47 +97,54 @@ a {
 }
 
 .main-container {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(20px);
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    margin: auto;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    width: 100%;
     height: 70vh;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 700px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
 }
 
 .favorite-cities-container {
-    max-width: 600px;
-    background-color: rgba(255, 255, 255, 0.8); /* Lighter background for contrast */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    padding: 30px;
-    text-align: left;
-    margin-top: 20px; /* Adjusted for space between container and other content */
- }
+    padding: 15px 20px;
+    text-align: center;
+    position: relative;
+    margin-top: 0;
+    height: auto;
+}
 
 h1 {
     font-size: 32px;
     text-align: center;
-    margin-bottom: 20px;
     color: #333;
+    margin-bottom: 10px;
 }
 
 #favorite-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    max-height: 250px; /* Limit the height */
-    overflow-y: auto; /* Add scroll if too many cities */
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #favorite-list li {
-    padding: 15px;
-    margin: 10px 0;
+    padding: 10px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -144,11 +152,11 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
+    transition: transform 0.3s ease;
 }
 
 #favorite-list li:hover {
-    background-color: #f0f0f0; /* Subtle hover effect */
+    background-color: #f0f0f0;
 }
 
 .remove-btn {
@@ -165,9 +173,22 @@ h1 {
     background-color: #ff1a1a;
 }
 
+/* Prevents the whole box from moving when removing items */
+.main-container,
+.favorite-cities-container {
+    min-height: 300px;
+}
+
 @media (max-width: 768px) {
-    .main-container, .favorite-cities-container {
+    .main-container {
         width: 90%;
         padding: 20px;
+        height: auto;
+        /* Allow it to adapt better to smaller screens */
+    }
+
+    .favorite-cities-container {
+        width: 100%;
+        padding: 15px;
     }
 }

@@ -1,7 +1,3 @@
-// document.querySelector('.day-name').textContent = 'Monday';
-// document.querySelector('.day-temperature').textContent = '15°C';
-// document.querySelector('.day-icon').src = 'assets/sunny.png'; // dynamically change icon based on API data
-
 //Changes background pictures depending on temperature
 function changeImage(temperature) {
   const weatherImage = document.getElementById("weather-background");
@@ -21,7 +17,6 @@ function changeImage(temperature) {
   );
   weatherImage.src = condition.src;
 
-  // Apply the background image to the body
   body.style.backgroundImage = `url('${condition.src}')`;
   body.style.backgroundSize = "cover";
   body.style.backgroundPosition = "center";
@@ -29,7 +24,7 @@ function changeImage(temperature) {
   body.style.backgroundAttachment = "fixed";
 }
 
-//identify current location
+// Function to get user's current geolocation and fetch weather data
 function getCurrentLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -45,18 +40,24 @@ function getCurrentLocation() {
           "Error: You need to enable access to your location",
           error
         );
-        alert(
-          "Unable to retrieve location. Please allow access to your location."
-        );
+        alert("Unable to retrieve location. Using Stockholm as default.");
+        fetchWeatherData(59.3293, 18.0686, "Stockholm", "Sweden");
       }
     );
   } else {
     console.error("Geolocation is not supported");
-    alert("Geolocation is not supported on your browser");
+    alert(
+      "Geolocation is not supported on your browser. Using Stockholm as default."
+    );
+    fetchWeatherData(59.3293, 18.0686, "Stockholm", "Sweden");
   }
 }
 
-// Find the weather form element
+// Ensure that when the page loads, the user's location is fetched or Stockholm is used as fallback
+window.onload = () => {
+  getCurrentLocation();
+};
+
 const weatherForm = document.getElementById("weather-form");
 
 // Check if the form exists before adding the event listener
@@ -64,7 +65,6 @@ if (weatherForm) {
   weatherForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    // Get the city input value
     const cityInput = document.querySelector(".city-input");
     const city = cityInput.value.trim();
     const errorMessage = document.getElementById("error-message");
@@ -77,7 +77,6 @@ if (weatherForm) {
       // Call the function to fetch the weather for the entered city
       fetchWeatherForCity(city);
     } else {
-      // If no valid city is entered, show an error message
       errorMessage.textContent = "Please enter a valid city name.";
       errorMessage.style.display = "block";
     }
@@ -233,7 +232,7 @@ function getWeatherDescriptions(weatherCode) {
 
 //Gets weather icon depending on temperature and condition
 function getWeatherIcon(weatherCode) {
-  let icon = "default.png"; // Fallback icon
+  let icon = "default.png";
 
   if (weatherCode === 0 || weatherCode === 1) {
     icon = "cloudy-day.png";
@@ -267,12 +266,6 @@ function displayCurrentWeather(currentWeather) {
   const weatherCondition = getWeatherDescriptions(weatherCode);
   const weatherIcon = getWeatherIcon(weatherCode);
   const weatherLocation = getCurrentLocation(weatherCode);
-
-  console.log(`Current Temperature: ${temperature}°C`);
-  console.log(`Current Weather Condition: ${weatherCondition}`);
-  //alert(`Today's Temperature: ${temperature}°C, Weather: ${weatherCondition}`);
-
-  // Update the temperature, condition, and icon in the HTML
 
   document.querySelector("#temperature").textContent = `${temperature}°C`;
   document.querySelector(".condition").textContent = weatherCondition;
@@ -309,7 +302,6 @@ function displayFiveDayForecast(dailyWeather) {
     console.log("weathercode: ", weatherCode[i]);
     console.log(`Max Temperature: ${maxTemperature[i]}°C`);
     console.log(`Min Temperature: ${minTemperature[i]}°C`);
-    //alert(`Date: ${dates[i]} - Max Temperature: ${maxTemperature[i]}°C, Min Temperature: ${minTemperature[i]}°C`);
   }
 }
 // Call the function once to get the location and fetch weather data
@@ -344,7 +336,6 @@ function displayWeatherData(
   const temperature = currentWeather.temperature; // Current temperature
   const weatherCode = currentWeather.weathercode; // Weather condition code
 
-  // Get max and min temperatures for the day (from dailyWeather)
   const maxTemperature = dailyWeather.temperature_2m_max[0];
   const minTemperature = dailyWeather.temperature_2m_min[0];
 
@@ -387,7 +378,6 @@ function displayWeatherData(
   const weatherCondition = getWeatherDescriptions(weatherCode);
   const weatherIcon = getWeatherIcon(weatherCode);
 
-  // Update weather condition and icon
   document.querySelector(".condition").textContent = weatherCondition;
   document.querySelector(".weather-icon").src = `assets/${weatherIcon}`;
 
@@ -424,7 +414,7 @@ function updateFiveDayForecast(forecastData) {
     forecastContainer[index].querySelector(
       ".day-temperature"
     ).textContent = `${day.minTemp}°C / ${day.maxTemp}°C`;
-    forecastContainer[index].querySelector(".day-icon").textContent = day.icon; // Use image or icon for this
+    forecastContainer[index].querySelector(".day-icon").textContent = day.icon;
   });
 }
 
