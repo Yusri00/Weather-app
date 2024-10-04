@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Weather</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-favorite.css">
     <!--Import Google Icons-->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body>
@@ -34,7 +34,7 @@
         <!--Navigation -->
         <nav>
             <ul class="menu">
-                <li><a href="details.html">5-Day Weather Forecast</a></li>
+                <li><a href="index.html">Current Weather Forecast</a></li>
                 <li><a href="favorite.html">Favorite</a></li>
             </ul>
         </nav>
@@ -43,79 +43,79 @@
     <!--Main Section -->
     <section class="weather-display">
         <!---Weather picture as background-->
-        <div class="weather-background">
-            <!-- <img src="thunder.jpg" alt="thundery weather" class="img-fullsize"> -->
-        </div>
-        <!--Weather background is empty by default -->
-        <img id="weather-image" src="" alt="weather background">
-
-        <main class="main-container">
-            <section class="input-container">
-                <input class="city-input" placeholder="City-search">
-                <button class="search-button" id="searchButton">
-                    <span class="material-symbols-outlined">
-                        search
-                    </span>
+        <div id="weather-background"></div>
+  
+    <main class="main-container">
+        <section class="input-container">
+                <form id="weather-form">
+                <input class="city-input" name="city" placeholder="Enter a city name...">
+                <button class="search-button" id="searchButton" aria-label="Search city weather" type="submit">
+                    <span class="material-symbols-outlined">search</span>
                 </button>
-            </section>
+                <p id="error-message" class="error-message" aria-live="polite" style="color: red; display: none;">
+                    Please enter a valid city name.
+                </p>
+            </form>
+        </section>
 
             <section class="weather-info">
                 <!-- Location and Date -->
                 <div class="location-date-container">
                     <div class="location">
-                        <span class="material-symbols-outlined">
-                            location_on
-                        </span>
-                        <h1 class="country-text">Sweden, </h1>
-                        <h2 class="city-text">Stockholm</h2>
+                        <h1 class="country-text" >Sweden, </h1>
+                        <h2 class="city-text" id="City-ID">Stockholm</h2>
+                        <span class="material-symbols-outlined">location_on</span>
                     </div>
-                    <!-- Temperature section -->
+                    <p class="current-date-text">Tue, 1 Oct</p>
+                </div>
+
+                    <!-- Temperature-->
                     <div class="temperature-container">
                         <h1 id="temperature">12°C</h1>
                         <p id="min-max-temperature">8° / 13°</p>
+                        <button id="add-to-favorites" class="add-to-favorites">Add to Favorites</button>
                     </div>
-                </div>
-                <p class="current-date-text">Tue, 1 Oct</p>
 
-                <!-- Current Weather -->
-                <div class="weather-description-container">
+                    <!-- Weather Condition and Icon -->
+                    <div class="weather-condition-container">
                     <div class="current-weather">
-                        <img src="assets/sunny.png" alt="weather icon" class="weather-icon-img">
+                        <img src="assets/clear-sun.png" alt="weather icon" class="weather-icon">
                         <p class="condition">Sunny</p>
                     </div>
-                </div>
+            </section>
 
-                <!-- 5-Day Forecast (to be updated dynamically) -->
-                <div class="five-day-container">
-                    <ul class="five-day-list">
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temperature"></span>
-                            <span class="day-icon"></span>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temperature"></span>
-                            <span class="day-icon"></span>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temperature"></span>
-                            <span class="day-icon"></span>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temperature"></span>
-                            <span class="day-icon"></span>
-                        </li>
-                        <li>
-                            <span class="day-name"></span>
-                            <span class="day-temperature"></span>
-                            <span class="day-icon"></span>
-                        </li>
-                        <div class="clear"></div>
-                    </ul>
-                </div>
+            
+
+                <!-- 5-Day Forecast (dynamically updated) -->
+            <section class="five-day-container">
+                <ul class="five-day-list">
+                    <li>
+                        <span class="day-name"></span>
+                        <span class="day-current-temperature"></span>
+                        <span class="day-temperature"></span>
+                        <img class="day-icon"></img>
+                    </li>
+                    <li>
+                        <span class="day-name"></span>
+                        <span class="day-temperature"></span>
+                        <img class="day-icon"></img>
+                    </li>
+                    <li>
+                        <span class="day-name"></span>
+                        <span class="day-temperature"></span>
+                        <img class="day-icon"></img>
+                    </li>
+                    <li>
+                        <span class="day-name"></span>
+                        <span class="day-temperature"></span>
+                        <img class="day-icon"></img>
+                    </li>
+                    <li>
+                        <span class="day-name"></span>
+                        <span class="day-temperature"></span>
+                        <img class="day-icon"></img>
+                    </li>
+                </ul>
             </section>
         </main>
 

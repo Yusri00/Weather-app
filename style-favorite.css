@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 600;
+}
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 300;
+    background-color: #f0f4f8;
+    background-image: "thunder.jpg";
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 100px; /* Give some space for the fixed header */
+}
+
+header {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 17px;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    margin-right: 8px;
+}
+
+.weather-font {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    color: #333;
+}
+
+.forecast-font {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #333;
+    font-size: 23px;
+}
+
+header img {
+    width: 50px;
+    height: auto;
+}
+
+.sun-logo {
+    color: #333;
+    position: relative;
+    margin-right: 20px;
+    width: 40px;
+    height: auto;
+}
+
+nav {
+    display: flex;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+    height: 70vh;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 800px;
+}
+
+.favorite-cities-container {
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.8); /* Lighter background for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: left;
+    margin-top: 20px; /* Adjusted for space between container and other content */
+}
+
+h1 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#favorite-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px; /* Limit the height */
+    overflow-y: auto; /* Add scroll if too many cities */
+}
+
+#favorite-list li {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+#favorite-list li:hover {
+    background-color: #f0f0f0; /* Subtle hover effect */
+}
+
+.remove-btn {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #ff1a1a;
+}
+
+@media (max-width: 768px) {
+    .main-container, .favorite-cities-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
