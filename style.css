@@ -10,10 +10,6 @@ body{
     font-weight: 300;
     background-color: #f0f4f8;
     color: #222;
-    background-image: url("thunder.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,16 +18,6 @@ body{
     position: relative;
 
 }
-
-/* body::before{
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100dvh;
-    background: rgb(0, 0, 0, 0.15);
-    backdrop-filter: blur(5px);
-    z-index: -1;
- } */
 
  header{
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -106,23 +92,9 @@ a{
     color: #333; /* Set link color */
 } 
 
-/* .main-container{
-    border: solid;
-    position: relative;
-    width: 60vw;
-    height: 70vh;
-    z-index: 10;
-    background: linear-gradient(
-        to top, rgb(0, 0, 0, 0.15),
-        rgb(255, 255, 255, 0.15 ));
-        border-radius: 16px;
-        backdrop-filter: blur(100px);
-        padding: 20px;
-} */
-
 .main-container{
     background: rgba(255, 255, 255, 0.5); /* Semi-transparent for a glass effect */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
+    backdrop-filter: blur(20px); /* Frosted glass effect */
     border-radius: 16px;   
     padding: 30px;   
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Soft shadow to add depth */
@@ -193,11 +165,20 @@ a{
     grid-template-columns: 1fr 1fr;  /* Two equal columns */
     grid-template-rows: auto auto;   /* Rows adjust based on content */
     gap: 10px;
-    color: 222;
+    color: #222; /* fixed color value */
     margin-top: 10px;
  }
+ 
 
-/* City and Date Styling */
+ /* Container that holds all elements horizontally aligned */
+.weather-condition-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spacing between icon and text */
+    margin-top: -100px; 
+}
+
+ 
 .location-date-container{
     grid-column: 1 / 2;  /* Location and Date span first column */
     display: flex;
@@ -209,14 +190,6 @@ a{
     font-size: 30px;  
     text-align: left; /* Align to the left */
     margin: 5px 0; /* Reduced space around date */
-}
-
-/* Container that holds all elements horizontally aligned */
-.weather-condition-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Spacing between icon and text */
-    margin-top: 10px;
 }
 
 .temperature-container {
@@ -232,7 +205,7 @@ a{
 }
 
 /* Optional styling for the icon */
-.weather-icon-img {
+.weather-icon {
     width: 100px;  /* Set icon size */
     height: 100px;
 }
@@ -279,37 +252,89 @@ a{
 }
 
 #min-max-temperature {
-    font-size: 20px; /* Size for min/max temperatures */
+    font-size: 20px;  
     line-height: 1.6;
 }
 
+.five-day-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+
 .five-day-list{
-    list-style: none;
-    display: flex; /* Display items in a row */
-    justify-content: space-between; /* Space them out */
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 60px;
+}
+img.day-icon{
+    height: 70px;
+    width: auto;
 }
 
+.five-day-list li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2); /* A little transparency for visual appeal */
+  border-radius: 10px;
+  width: 100px;  
+ }
+
+.day-name {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
 .day-temperature{
-    font-size: 70px;
+    font-size: 10px;
     font-weight: 500;
 }
 
-/* Favorite Section */
-.favorite-section {
-    padding: 20px;
+.add-to-favorites {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 9px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .add-to-favorites:hover {
+    background-color: #0056b3;
+  }
+
+/* footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
     text-align: center;
 }
 
-.favorite-container{
-    width: 80%;
-    max-width: 600px;
-    height: 300px;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: left;
+footer a {
+    color: white;
+    text-decoration: none;
+} */
+
+.forecast, .current-weather {
+    width: 100%;
+    text-align: center;
+  }
+
+  #weather-background {
+    width: 100%;
+    height: auto;
+  }
+
+@media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+  
 }
- 
- 
