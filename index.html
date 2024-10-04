@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Weather</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style-favorite.css">
-    <!--Import Google Icons-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+     <!--Import Google Icons-->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body>
@@ -44,50 +44,53 @@
     <section class="weather-display">
         <!---Weather picture as background-->
         <div id="weather-background"></div>
-  
-    <main class="main-container">
-        <section class="input-container">
+
+        <main class="main-container">
+            <section class="input-container">
                 <form id="weather-form">
-                <input class="city-input" name="city" placeholder="Enter a city name...">
-                <button class="search-button" id="searchButton" aria-label="Search city weather" type="submit">
-                    <span class="material-symbols-outlined">search</span>
-                </button>
-                <p id="error-message" class="error-message" aria-live="polite" style="color: red; display: none;">
-                    Please enter a valid city name.
-                </p>
-            </form>
-        </section>
+                    <input class="city-input" name="city" placeholder="Enter a city name...">
+                    <button class="search-button" id="searchButton" aria-label="Search city weather" type="submit">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                    <p id="error-message" class="error-message" aria-live="polite" style="color: red; display: none;">
+                        Please enter a valid city name.
+                    </p>
+                </form>
+            </section>
 
             <section class="weather-info">
                 <!-- Location and Date -->
                 <div class="location-date-container">
                     <div class="location">
-                        <h1 class="country-text" >Sweden, </h1>
+                        <h1 class="country-text">Sweden, </h1>
                         <h2 class="city-text" id="City-ID">Stockholm</h2>
                         <span class="material-symbols-outlined">location_on</span>
                     </div>
                     <p class="current-date-text">Tue, 1 Oct</p>
+                    <p class="current-time"></p>
                 </div>
 
-                    <!-- Temperature-->
-                    <div class="temperature-container">
-                        <h1 id="temperature">12°C</h1>
-                        <p id="min-max-temperature">8° / 13°</p>
-                        <button id="add-to-favorites" class="add-to-favorites">Add to Favorites</button>
-                    </div>
+                <!-- Temperature-->
+                <div class="temperature-container">
+                    <h1 id="temperature">12°C</h1>
+                    <p id="min-max-temperature">8° / 13°</p>
+                    <button id="add-to-favorites" class="add-to-favorites">Add to Favorites</button>
+                </div>
+            </section>
 
-                    <!-- Weather Condition and Icon -->
-                    <div class="weather-condition-container">
+            <!-- Weather Condition and Icon -->
+            <section class="current-weather-section">
+                <div class="weather-condition-container">
                     <div class="current-weather">
                         <img src="assets/clear-sun.png" alt="weather icon" class="weather-icon">
                         <p class="condition">Sunny</p>
                     </div>
+                </div>
             </section>
 
-            
-
-                <!-- 5-Day Forecast (dynamically updated) -->
+            <!-- 5-Day Forecast (dynamically updated) -->
             <section class="five-day-container">
+                <h2 class="five-day-title">5 Day Forecast</h2>
                 <ul class="five-day-list">
                     <li>
                         <span class="day-name"></span>
@@ -118,10 +121,6 @@
                 </ul>
             </section>
         </main>
-
-
-        <!--Add footer-->
-        <footer></footer>
         <script src="myscript.js"></script>
 </body>
 

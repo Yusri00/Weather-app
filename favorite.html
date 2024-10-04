@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorite locations</title>
-    <link rel="stylesheet" href="style-favorite.css">
-</head>
+    <link rel="stylesheet" href="style-favorite.css" />
+  </head>
 
-<body>
-
+  <body>
     <!-- Header Section with Navigation. Header class makes text vertical with logo on same line -->
     <header class="header">
+      <!---Combined logo text-->
+      <div class="logo-container">
+        <a href="index.html">
+          <h2 class="logo-text">
+            <span class="weather-font">Weather</span>
+            <span class="forecast-font">Forecast</span>
+          </h2>
+        </a>
 
-        <!---Combined logo text-->
-        <div class="logo-container">
-            <a href="index.html">
-                <h2 class="logo-text">
-                    <span class="weather-font">Weather</span>
-                    <span class="forecast-font">Forecast</span>
-                </h2>
-            </a>
+        <!---Image logo-->
+        <a href="index.html">
+          <img class="sun-logo" src="sunny.png" alt="logo of a sun" />
+        </a>
+      </div>
 
-            <!---Image logo-->
-            <a href="index.html">
-                <img class="sun-logo" src="sunny.png" alt="logo of a sun">
-            </a>
-        </div>
-
-        <!--Navigation -->
-        <nav>
-            <ul class="menu">
-                <li><a href="details.html">5-Day Weather Forecast</a></li>
-                <li><a href="favorite.html">Favorite</a></li>
-            </ul>
-        </nav>
+      <!--Navigation -->
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">5-Day Weather Forecast</a></li>
+          <li><a href="favorite.html">Favorite</a></li>
+        </ul>
+      </nav>
     </header>
 
+    <!--Main container -->
     <main class="main-container">
-        <section class="favorite-cities-container">
-                <h1>Your Favorite Cities</h1>
-                     <ul id="favorite-list">
-                        <!-- Cities will be added here dynamically -->
-                    </ul>
-        </section>
+      <div class="favorite-background"></div>
+      <section class="favorite-cities-container">
+        <h1>Your Favorite Cities</h1>
+        <ul id="favorite-list">
+          <!-- Cities will be added here dynamically -->
+        </ul>
+      </section>
     </main>
     <script src="myscript.js"></script>
-</body>
-
+  </body>
 </html>

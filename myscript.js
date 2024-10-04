@@ -26,14 +26,8 @@ function changeImage(temperature) {
   body.style.backgroundSize = "cover";
   body.style.backgroundPosition = "center";
   body.style.backgroundRepeat = "no-repeat";
-  body.style.backgroundAttachment = "fixed"; // Keeps the background fixed while scrolling
+  body.style.backgroundAttachment = "fixed";
 }
-
-//Changes background picture based on API and user input
-// function changeImageInput(search) {
-//   let weatherImage = document.getElementById("weather-image");
-//   let userInput = document.getElementById("searchButton");
-// }
 
 //identify current location
 function getCurrentLocation() {
@@ -42,9 +36,9 @@ function getCurrentLocation() {
       (position) => {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        //console.log(`Latitude: ${latitude}, Longitude: ${longitude}`); // Check if location is retrieved
+
         fetchCityName(latitude, longitude);
-        fetchWeatherData(latitude, longitude); // Fetch weather data based on current location
+        fetchWeatherData(latitude, longitude);
       },
       (error) => {
         console.error(
@@ -152,7 +146,6 @@ function fetchCityName(latitude, longitude) {
         // Check if city and country were found
         if (city && country) {
           console.log(`City: ${city}, Country: ${country}`);
-          alert(`Location: ${city}, Country: ${country}`);
         } else {
           console.error("Unable to retrieve city or country information.");
           alert("Unable to retrieve city or country information.");
@@ -192,8 +185,6 @@ function fetchWeatherData(latitude, longitude, cityName, countryName) {
       }
       // Display 5-day weather forecast
       if (data.daily) {
-        //TODO:
-        console.log(data);
         displayFiveDayForecast(data.daily);
       }
     })
@@ -324,6 +315,90 @@ function displayFiveDayForecast(dailyWeather) {
 // Call the function once to get the location and fetch weather data
 getCurrentLocation();
 
+function displayCurrentTime() {
+  const date = new Date();
+
+  // Format the time to hh:mm AM/PM format
+  const hours = date.getHours();
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
+
+  const timeElement = document.querySelector(".current-time");
+
+  if (timeElement) {
+    timeElement.textContent = formattedTime;
+  }
+}
+// Calls function immediately and then set an interval
+displayCurrentTime();
+setInterval(displayCurrentTime, 60000);
+
+// Display weather data including temperature, location, date and time
+function displayWeatherData(
+  currentWeather,
+  dailyWeather,
+  cityName,
+  countryName
+) {
+  const temperature = currentWeather.temperature; // Current temperature
+  const weatherCode = currentWeather.weathercode; // Weather condition code
+
+  // Get max and min temperatures for the day (from dailyWeather)
+  const maxTemperature = dailyWeather.temperature_2m_max[0];
+  const minTemperature = dailyWeather.temperature_2m_min[0];
+
+  const date = new Date();
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const formattedDate = `${daysOfWeek[date.getDay()]}, ${date.getDate()} ${
+    months[date.getMonth()]
+  }`;
+
+  // Update only if cityName and countryName exist
+  if (cityName && countryName) {
+    document.querySelector(".country-text").textContent = "";
+    document.getElementById(
+      "City-ID"
+    ).textContent = `${cityName}, ${countryName}`;
+  }
+
+  document.querySelector(".current-date-text").textContent = formattedDate;
+  document.querySelector(".day-temperature").textContent = `${temperature}°C`;
+  document.querySelector(
+    "#min-max-temperature"
+  ).textContent = `Max: ${maxTemperature}°C, Min: ${minTemperature}°C`;
+
+  // Get weather condition and icon
+  const weatherCondition = getWeatherDescriptions(weatherCode);
+  const weatherIcon = getWeatherIcon(weatherCode);
+
+  // Update weather condition and icon
+  document.querySelector(".condition").textContent = weatherCondition;
+  document.querySelector(".weather-icon").src = `assets/${weatherIcon}`;
+
+  displayCurrentTime();
+
+  // Log or display weather data
+  console.log(
+    `Temperature: ${temperature}°C, Weather Condition: ${weatherCondition}`
+  );
+}
+
 function updateFiveDayForecast(forecastData) {
   const dayNames = [
     "Sunday",
@@ -345,77 +420,12 @@ function updateFiveDayForecast(forecastData) {
       ".day-current-temperature"
     ).textContent = day.temperature;
 
-    //TODO:
-    console.log("weathercode", day.weatherCode);
+    //console.log("weathercode", day.weatherCode);
     forecastContainer[index].querySelector(
       ".day-temperature"
     ).textContent = `${day.minTemp}°C / ${day.maxTemp}°C`;
     forecastContainer[index].querySelector(".day-icon").textContent = day.icon; // Use image or icon for this
   });
-}
-
-// Display weather data including temperature, location, and date
-function displayWeatherData(
-  currentWeather,
-  dailyWeather,
-  cityName,
-  countryName
-) {
-  const temperature = currentWeather.temperature; // Current temperature
-  const weatherCode = currentWeather.weathercode; // Weather condition code
-
-  // Get max and min temperatures for the day (from dailyWeather)
-  const maxTemperature = dailyWeather.temperature_2m_max[0]; // Max temperature for the first day
-  const minTemperature = dailyWeather.temperature_2m_min[0]; // Min temperature for the first day
-
-  const date = new Date();
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const formattedDate = `${daysOfWeek[date.getDay()]}, ${date.getDate()} ${
-    months[date.getMonth()]
-  }`;
-
-  // Update only if cityName and countryName exist
-  if (cityName && countryName) {
-    console.log(cityName);
-
-    document.querySelector(".country-text").textContent = "";
-    document.getElementById(
-      "City-ID"
-    ).textContent = `${cityName}, ${countryName}`;
-  }
-
-  document.querySelector(".current-date-text").textContent = formattedDate;
-  document.querySelector(".day-temperature").textContent = `${temperature}°C`;
-
-  document.querySelector(
-    "#min-max-temperature"
-  ).textContent = `Max: ${maxTemperature}°C, Min: ${minTemperature}°C`;
-
-  // Get weather condition and icon
-  const weatherCondition = getWeatherDescriptions(weatherCode);
-  const weatherIcon = getWeatherIcon(weatherCode);
-  // Update weather condition and icon
-  document.querySelector(".condition").textContent = weatherCondition;
-  document.querySelector(".weather-icon").src = `assets/${weatherIcon}`;
-
-  // Log or display weather data
-  console.log(
-    `Temperature: ${temperature}°C, Weather Condition: ${weatherCondition}`
-  );
 }
 
 // Check if the "Add to Favorites" button exists on the page (for index.html)
